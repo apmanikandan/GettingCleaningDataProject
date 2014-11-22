@@ -1,5 +1,7 @@
+# Load library
 library(plyr)
 
+# download the file and unzip into data directory
 if (!file.exists("data")) {
         dir.create("data")
 }
@@ -12,6 +14,7 @@ if (!file.exists("data")) {
               setTimes = FALSE)
  }
 
+# Read raw data
 x_train <- read.table("./UCI HAR Dataset/train/X_train.txt",header=FALSE)
 y_train <- read.table("./UCI HAR Dataset/train/y_train.txt",header=FALSE)
 subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt",header=FALSE)
@@ -23,15 +26,11 @@ subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt",header=FALS
 features<-read.table("./UCI HAR Dataset/features.txt",header=FALSE,colClasses = c("character"))
 activity_Labels <- read.table("./UCI HAR Dataset/activity_labels.txt", col.names = c("ActivityId", "Activity"))
 
-# Binding sensor data - train and test files.
+# Bind the sensor data - merging of train and test files.
 
 training_sensor_data <- cbind(cbind(x_train, subject_train), y_train)
 test_sensor_data <- cbind(cbind(x_test, subject_test), y_test)
 sensor_data <- rbind(training_sensor_data, test_sensor_data)
-
-cleanFeatures<-gsub("([()])", "", features[,2])
-cleanFeatures<-gsub("([-])","",cleanFeatures)
-cleanFeatures<-gsub("([,])","",cleanFeatures)
 
 # Label columns - Clean them by removing problematic text aswell 
 
@@ -60,5 +59,5 @@ sensor_data_mean_std <- sensor_data_mean_std[,-1]
 ################################################################################################
 
 sensor_avg_by_act_sub = ddply(sensor_data_mean_std, c("Subject","Activity"), numcolwise(mean))
-write.table(sensor_avg_by_act_sub, file = "sensor_avg_by_act_subj.txt")
+write.table(sensor_avg_by_act_sub, file = "sensor_avg_by_act_subj.txt",row.name=FALSE)
 

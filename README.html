@@ -146,9 +146,11 @@ hr {
 
 <p>The purpose of this project is to demonstrate the ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. </p>
 
-<p>1) a tidy data set as described below, 
-2) a link to a Github repository with your script for performing the analysis, and 
-3) a code book that describes the variables, the data, and any transformations or work that you performed to clean up the data called CodeBook.md. You should also include a README.md in the repo with your scripts. This repo explains how all of the scripts work and how they are connected. </p>
+<ol>
+<li><p>A tidy data set as described below, </p></li>
+<li><p>A link to a Github repository with your script for performing the analysis, and </p></li>
+<li><p>A code book that describes the variables, the data, and any transformations or work that you performed to clean up the data called CodeBook.md. You should also include a README.md in the repo with your scripts. This repo explains how all of the scripts work and how they are connected.</p></li>
+</ol>
 
 <p>One of the most exciting areas in all of data science right now is wearable computing - see for example this article . Companies like Fitbit, Nike, and Jawbone Up are racing to develop the most advanced algorithms to attract new users. The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained:</p>
 
@@ -158,15 +160,24 @@ hr {
 
 <p><a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a></p>
 
-<p>The R script called run_analysis.R  does the following. </p>
+<p>The R script called run_analysis.R  does the following.
+ 1 Merges the training and the test sets to create one data set.
+ 2 Extracts only the measurements on the mean and standard deviation for each measurement. 
+ 3 Uses descriptive activity names to name the activities in the data set
+ 4 Appropriately labels the data set with descriptive variable names. 
+ 5 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.</p>
 
-<pre><code>* Merges the training and the test sets to create one data set.
-* Extracts only the measurements on the mean and standard deviation for each measurement. 
-* Uses descriptive activity names to name the activities in the data set
-* Appropriately labels the data set with descriptive variable names. 
+<p>How to create the tidy data set</p>
 
-From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-</code></pre>
+<ol>
+<li>clone this repository: git clone <a href="mailto:git@github.com">git@github.com</a>:apmanikandan/GettingCleaningDataProject.git</li>
+<li>download compressed raw data</li>
+<li>unzip raw data and copy the directory UCI HAR Dataset to the cloned repository root directory</li>
+<li>open a R console and set the working directory to the repository root (use setwd())</li>
+<li>source run_analisys.R script (it requires the plyr package): source(&#39;run_analysis.R&#39;)</li>
+</ol>
+
+<p>In the repository root directory you find the file sensor_avg_by_act_subj.txt with the tidy data set.</p>
 
 </body>
 
